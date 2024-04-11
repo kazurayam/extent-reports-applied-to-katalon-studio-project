@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ExtentReport001</name>
+   <tag>Smoke</tag>
+   <comment></comment>
+   <testCaseGuid>b4e5f593-a93f-4999-9658-27b8130c4f06</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,165 @@
+{
+  "keywordFileContentHash": "CBA55426853AB7A4C447FD5EB6001888",
+  "keywordClasses": [
+    {
+      "name": "com.katalon.extent.report.ExtentReport",
+      "keywordMethods": [
+        {
+          "name": "attachReport",
+          "parameters": [
+            {
+              "name": "testSuiteContext",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.context.TestSuiteContext",
+                "unresolvedClassName": "TestSuiteContext",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "setDocumentTitle",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.String",
+                "unresolvedClassName": "String",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "setReportTitle",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.String",
+                "unresolvedClassName": "String",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        },
+        {
+          "name": "startReport",
+          "parameters": [
+            {
+              "name": "testCaseContext",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.context.TestCaseContext",
+                "unresolvedClassName": "TestCaseContext",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        },
+        {
+          "name": "flushReport",
+          "parameters": [],
+          "javadoc": ""
+        },
+        {
+          "name": "getScreenshot",
+          "parameters": [],
+          "javadoc": ""
+        },
+        {
+          "name": "takeScreenshotFailure",
+          "parameters": [
+            {
+              "name": "testCaseContext",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.context.TestCaseContext",
+                "unresolvedClassName": "TestCaseContext",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        },
+        {
+          "name": "deleteFolderContents",
+          "parameters": [
+            {
+              "name": "folderPath",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.nio.file.Path",
+                "unresolvedClassName": "Path",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        },
+        {
+          "name": "addScreenshot",
+          "parameters": [
+            {
+              "name": "String",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.Object",
+                "unresolvedClassName": "java.lang.Object",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": true,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        },
+        {
+          "name": "attachLog",
+          "parameters": [
+            {
+              "name": "details",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.String",
+                "unresolvedClassName": "String",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        }
+      ]
+    },
+    {
+      "name": "com.katalon.extent.report.ExtentReport$1",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": true
+}
