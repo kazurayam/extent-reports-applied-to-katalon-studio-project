@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ExtentReport001-Login</name>
+   <tag>Smoke</tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b268eead-3248-4454-89c4-a17beb2762da</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>dc855fa1-9d79-44db-8200-ed5ee453f057</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>fd274cdc-ee15-4111-960c-2f2d878aeed9</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Mohit'</defaultValue>
+      <description></description>
+      <id>dc855fa1-9d79-44db-8200-ed5ee453f057</id>
+      <masked>false</masked>
+      <name>user</name>
+   </variable>
+   <variable>
+      <defaultValue>'Mohit123'</defaultValue>
+      <description></description>
+      <id>fd274cdc-ee15-4111-960c-2f2d878aeed9</id>
+      <masked>false</masked>
+      <name>pass</name>
+   </variable>
+</TestCaseEntity>

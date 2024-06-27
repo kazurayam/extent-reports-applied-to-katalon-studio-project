@@ -18,7 +18,5 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-CustomKeywords.'com.katalon.extent.report.ExtentReport.tearDownTakeScreenshotFailure'()
-
-CustomKeywords.'com.katalon.extent.report.ExtentReport.attachReport'(null)
+println(System.getProperty("user.dir"))
 

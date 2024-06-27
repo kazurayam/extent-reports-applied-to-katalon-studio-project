@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ExtentReport001 - Close Browser</name>
+   <tag>Smoke</tag>
+   <comment></comment>
+   <testCaseGuid>a42c9ad2-a2cd-4bce-9535-4eb145644f72</testCaseGuid>
+</TestCaseEntity>
