@@ -19,3 +19,4 @@ build
 /.settings/
 /.classpath
 .svn/
+.DS_Store
