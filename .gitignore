@@ -21,3 +21,5 @@ build
 /.classpath
 .svn/
 .DS_Store
+/.cache/
+/gradle/
