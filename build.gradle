@@ -29,7 +29,7 @@ shadowJar {
 
 groovydoc {
   source = pluginSources
-  docTitle = 'katalon extent report plugin'
+  docTitle = 'Katalon Extent Report Plugin'
 }
 
 dependencies {
