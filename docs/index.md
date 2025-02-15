@@ -97,7 +97,7 @@ I added a new class [`com.kazurayam.ks.ExtentReports`](https://github.com/kazura
 
 I edited the `Test Listeners/ExtentReportsListener.groovy` so that it no longer calls the original `com.katalon.extent.ExtentReport` keyword. Instead, It calls the new `com.kazurayam.ks.ExtentReportKeyword`. You can see the diff of old/new `ExtentReportsListener` at:
 
--   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…​0.0.1#diff-f4ea12441d88d4878f66d8412e61ca8c2de6bdb20a6d99f31f62a5fa655857c0>
+-   [diff between old/new ExtentReportsListener](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original..0.0.1#diff-f4ea12441d88d4878f66d8412e61ca8c2de6bdb20a6d99f31f62a5fa655857c0)
 
 I would quote a small piece out of the changes:
 
