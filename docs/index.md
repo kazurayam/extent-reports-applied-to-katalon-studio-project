@@ -70,7 +70,18 @@ I made several changes my demo project. You can find the exact differences betwe
 
 -   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…​0.0.1>
 
-Notably, I made 2 changes:
+Notably, 3 points to be noted:
+
+### No change in `com.katalon.extent.report.ExtentReport` class
+
+The [com.katalon.extent.report.ExtentReport](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy) class
+is the core part of the project, which implements interface between your Katalon test scripts and the Extent Reports library.
+I made no change.
+[The class source in my demo project](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy) is just
+the same as [the original](https://github.com/coty/extent-report-sample/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy).
+
+Therefore, whenever the original reposigory is updated (if any),
+I would not hesitate to carry out "git pull" from the original repository to my fork.
 
 ### A new class `com.kazurayam.ks.ExtentReportsKeyword`
 
@@ -141,17 +152,3 @@ If you removed all those files, you can restore them by invoking a Gradle build:
     katalon_generated_rxjava-3.1.8.jar
 
 If you are interested in how Gradle works in this project, you should study the [build.gradle](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/build.gradle) file.
-
-## Extent Report integration plugin
-
-Katalon offers a plugin named [ExtentReport integration plugin](https://docs.katalon.com/katalon-studio/integrations/test-analysis/extent-reports-integration). It was first published in April 2024 on GitHub as a free stuff.
-
--   <https://forum.katalon.com/t/katalon-and-extent-reports-integration/44337/3>
-
-Later in Jun 2024, the integration plugin was changed to be an enterprise plugin.
-
--   <https://forum.katalon.com/t/katalon-and-extent-reports-integration/44337/7>
-
-We can read the [Changelog](https://store.katalon.com/product/387/Extent-Report-Integration/change-logs) of the integration plugin. The Changelong shows that several updates was made at 05 Feb 2025. I believe, the plugin will be maintained by Katalon as needed in future.
-
-However I personally do not have an Enterprise license, so that I can not study the Extent Report integration plugin at all. I have no idea what changes were made in the recent updates.

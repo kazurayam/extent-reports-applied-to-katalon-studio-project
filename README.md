@@ -1,3 +1,6 @@
+See also https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/
+
+----
 # Katalon Studio Extent Report Plugin
 
 This plugin integrates Extent Reports with Katalon Studio, providing detailed and customizable test execution reports.
