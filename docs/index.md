@@ -1,210 +1,157 @@
-# How to integrate Extent Reports with Katalon Studio
+# How to apply Extent Reports to Katalon Studio project
 
-This is a small Katalon Studio project for demonstration purpose. You can download the zip from the [Releases]() page, unzip it, ran it using your local Katalon Studio.
+This repository presents a [Katalon Studio](https://katalon.com/katalon-studio) project which integrates the [Extent Reports](https://extentreports.com/) to compile a test execution report in HTML. The Extent Reports enables users to customize the content of the report.
 
 ## Problem to solve
 
+In the Katalon Community forum, there was a topic
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+-   <https://forum.katalon.com/t/is-possible-to-add-in-html-or-pdf-reports-the-git-current-branch/163746>
 
-## Ut enim ad minim veriam
+Let me quote the part of the pos here:
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-### Duis aute irure dolor
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-#### Excepteur sint occaecat cupidatat
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-# Quo usque tandem abutere
-
-Quo usque tandem abutere, Catilina, patientia nostra?
-
-# Header with (& - \_ : ; ) non Latin Characters
-
-Quam diu etiam furor iste tuus nos eludet?
-
-# Source code inclusion example
-
-    #!/bin/bash
-
-    # Under the current working directory, convert all the files
-    # with name ending with `_.adoc` into `.md`.
-    # A file with name `*_.adoc` is an Asciidoc document file.
-    # A file with name `*.md` is a Markdown document file.
-    # E.g, `index_.adoc` will be converted into `index.md`
-    #
-    # However, ffiles with name which starts with with `_` will be ignored.
-    # E.g, `_index_.adoc` will be ignored.
-    #
-    # How to run this: in the command line, just type
-    #
-    #     `> ./adoc2md.sh`
-    #
-    # By specifying `-t` option in the command line,
-    #
-    #     `> ./adoc2md.sh -t`
-    #
-    # you can prepend a text segment into the output .md file:
-    #
-    # ```
-    # - Table of Contents
-    # {:toc}
-    #
-    # ```
-    # This text segment will affect the [Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll)
-    # used by GitHub Pages to generate a table of contents.
-    #
-
-    requireTOC=false
-
-    optstring="t"
-    while getopts ${optstring} arg; do
-      case ${arg} in
-        t)
-            requireTOC=true
-            ;;
-        ?)
-            ;;
-      esac
-    done
-
-    function processFile() {
-      fname=$1
-      #echo "fname=${fname}"
-      #  using Asciidoctor, convert a *.adoc file into a docbook in XML
-      md=${fname//adoc/md}
-      xml=${fname//adoc/xml}
-      echo "converting $fname into $md"
-      asciidoctor -b docbook -a leveloffset=+1 -o - "$fname" > "$xml"
-      # using Pandoc, generate a Markdown file without TOC
-      cat "$xml" | pandoc --markdown-headings=atx --wrap=preserve -t markdown_strict -f docbook - > "$md"
-      #echo deleting $xml
-      rm -f "$xml"
-
-      # We named `index_.adoc` rather than `index.adoc` because GitHub puts precedence to `index.adoc` over `index.md`. We want `index.md` to be presented first, not `*.adoc`. Therefore we named our adoc file with `*_.adoc` postfix.
-      # This trick required further treatment.
-      # `index_.adoc` will result `index_.adoc`. But we
-      # want the final result to be `index.md`.
-      # So, we will rename `*_.md` into `*.md`.
-      # in other words, chomp an underline character (_) before `.md``
-      # e.g,
-      #   ./index_.adoc    -> ./index.md
-      #   ./index-ja_.md -> ./index-ja.md
-      newmd=${md%_.md}.md
-      echo renaming $md to $newmd
-      mv $md $newmd
-
-      # Slightly modify the generated *.md file.
-      # Prepend a text segment:
-      # ```
-      # - Table of contents
-      # {:toc}
-      # ```
-      if [ $requireTOC = true ]; then
-        echo "- Table of contents" > temp.md
-        echo "{:toc}" >> temp.md
-        echo "" >> temp.md
-        cat $newmd >> temp.md
-        cat temp.md > $newmd
-        rm temp.md
-        echo prepended the TOC segement in $newmd
-      fi
-      # just a blank line to separate the *.adoc files processed
-      echo ""
-    }
-
-
-
-    # iterate over all *.adoc files
-    find . -iname "*_.adoc" -type f -maxdepth 1 -not -name "_*.adoc" | while read fname; do
-      processFile $fname
-    done
-
-# Diagram example
-
-Generated using [PlantUML](https://plantuml.com/ja/)
+> I´m trying to customize the html and pdf report in order to show some usefull information.
+>
+> I would like to show the current branch of the repository that I´m testing in the Excecution environment section of the report
 
 <figure>
-<img src="https://kazurayam.github.io/adoc2md/diagrams/out/sequence/sequence.png" alt="sequence" />
+<img src="https://europe1.discourse-cdn.com/katalon/original/3X/6/2/6263a3befc8600a64947a34719a1b8a9ce0c987a.png" alt="6263a3befc8600a64947a34719a1b8a9ce0c987a" />
 </figure>
 
-# 宮沢賢治の詩その1
+The original poster tried to customize the built-in HTML report compiled by Katalon Studio, but he could not find out the way. I knew the [answer](https://forum.katalon.com/t/is-possible-to-add-in-html-or-pdf-reports-the-git-current-branch/163746/3) to him. The Katalon built-in report is not customizable at all. Then, what should he do?
 
-心象スケッチ　春と修羅
+## Solution
 
-    わたくしといふ現象は
-    仮定された有機交流電燈の
-    ひとつの青い照明です
-    （あらゆる透明な幽霊の複合体）
-    風景やみんなといつしよに
-    せはしくせはしく明滅しながら
-    いかにもたしかにともりつづける
-    因果交流電燈の
-    ひとつの青い照明です
-    （ひかりはたもち　その電燈は失はれ）
+In the [following post](https://forum.katalon.com/t/is-possible-to-add-in-html-or-pdf-reports-the-git-current-branch/163746/7), I suggested [Extent Reports](https://extentreports.com/). Using it, he should be able to compile a new test execution report. It would be easy to insert the Git branch name, like `GIT BRANCH: master`.
 
-    これらは二十二箇月の
-    過去とかんずる方角から
-    紙と鉱質インクをつらね
-    （すべてわたくしと明滅し
-    　みんなが同時に感ずるもの）
-    ここまでたもちつゞけられた
-    かげとひかりのひとくさりづつ
-    そのとほりの心象スケッチです
+## Description
 
-# 宮沢賢治の詩その2
+In the GitHub, I found a public repository by [coty](https://github.com/coty), Katalon CTO.
 
-    雨ニモマケズ
-    風ニモマケズ
-    雪ニモ夏ノ暑サニモマケヌ
-    丈夫ナカラダヲモチ
-    欲ハナク
-    決シテ瞋ラズ
-    イツモシヅカニワラッテヰル
-    一日ニ玄米四合ト
-    味噌ト少シノ野菜ヲタベ
-    アラユルコトヲ
-    ジブンノカンジョウニ入レズニ
-    ヨクミキキシワカリ
-    ソシテワスレズ
-    野原ノ松ノ林ノ蔭ノ
-    小サナ萱ブキノ小屋にヰテ
-    東に病気ノコドモアレバ
-    行ッテ看病シテヤリ
-    西ニ疲レタ母アレバ
-    行ッテソノ稲ノ束ヲ負ヒ
-    南ニシニサウナ人アレバ
-    行ッテコハガラナクテモイゝトイヒ
-    北にケンクヮヤソショウガアレバ
-    ツマラナイカラヤメロとイヒ
-    ヒドリノトキハナミダヲナガし
-    サムサノナツハオロオロアルキ
-    ミンナニデクノボー トヨバレ
-    ホメラレモセズ
-    クニモサレズ
-    サウイフモノニ
-    ワタシハナリタイ
+-   <https://github.com/coty/extent-report-sample>
 
-    南無無辺行菩薩
-    南無上行菩薩
-    南無多宝如来
-    南無妙法蓮華経
-    南無釈迦牟尼仏
-    南無浄行菩薩
-    南無安立行菩薩
+The repository contains a Katalon Studio project. Katalon users can learn how to use the Extent Reports in a Katalon project.
 
-# Dolorem ipsum
+I forked the project to form a new GitHub repository at
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa. Praesent tristique magna sit amet purus. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. In cursus turpis massa tincidunt dui ut. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Facilisis mauris sit amet massa vitae tortor condimentum. Sapien faucibus et molestie ac feugiat sed lectus vestibulum. Eu turpis egestas pretium aenean pharetra magna ac placerat. Nulla aliquet porttitor lacus luctus accumsan tortor posuere. Sit amet purus gravida quis blandit turpis cursus. Suspendisse sed nisi lacus sed. Laoreet non curabitur gravida arcu ac. Dolor sit amet consectetur adipiscing elit pellentesque. Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat.
+-   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project>
 
-Praesent tristique magna sit amet purus gravida quis blandit turpis. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Suspendisse faucibus interdum posuere lorem ipsum dolor sit. Sem integer vitae justo eget magna fermentum iaculis eu. Felis bibendum ut tristique et egestas. Vel orci porta non pulvinar neque laoreet. Ac tortor vitae purus faucibus ornare suspendisse sed. In mollis nunc sed id semper. Pellentesque id nibh tortor id aliquet lectus proin. Id faucibus nisl tincidunt eget nullam non nisi est. Senectus et netus et malesuada fames ac turpis egestas. Viverra vitae congue eu consequat ac. Vel pharetra vel turpis nunc eget lorem dolor sed viverra. Sodales ut eu sem integer vitae. Pharetra vel turpis nunc eget lorem. Nam at lectus urna duis convallis convallis tellus. Massa tempor nec feugiat nisl pretium fusce id velit ut. Et ultrices neque ornare aenean euismod elementum nisi. Ut morbi tincidunt augue interdum velit. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus.
+I made some changes in the forked repository, and got a success to create a HTML report that displays :
 
-Et sollicitudin ac orci phasellus egestas tellus. Sit amet purus gravida quis blandit turpis cursus. Interdum varius sit amet mattis vulputate enim nulla aliquet. Quam id leo in vitae turpis massa sed elementum. Justo donec enim diam vulputate ut pharetra sit amet aliquam. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Leo integer malesuada nunc vel risus commodo viverra maecenas. Neque viverra justo nec ultrices dui sapien eget mi. Vel risus commodo viverra maecenas. Purus in massa tempor nec feugiat nisl pretium fusce. In nisl nisi scelerisque eu ultrices vitae. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut. Elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices sagittis orci a scelerisque purus semper. Aliquam sem et tortor consequat id. Sed vulputate odio ut enim blandit volutpat maecenas volutpat. Sed euismod nisi porta lorem mollis aliquam.
+![GIT BRANCH master](./images/GIT_BRANCH_master.png)
 
-Faucibus ornare suspendisse sed nisi lacus sed viverra. Duis at tellus at urna. Sem fringilla ut morbi tincidunt augue interdum. Proin libero nunc consequat interdum varius sit amet. Elementum facilisis leo vel fringilla est. In fermentum posuere urna nec tincidunt. Urna id volutpat lacus laoreet non curabitur gravida arcu ac. Arcu ac tortor dignissim convallis aenean et tortor. Odio facilisis mauris sit amet massa vitae tortor condimentum. At tellus at urna condimentum mattis pellentesque. Sed tempus urna et pharetra pharetra massa. Gravida quis blandit turpis cursus in hac. Enim neque volutpat ac tincidunt vitae semper quis lectus nulla. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+## Environment
 
-Aliquam purus sit amet luctus venenatis lectus magna. Vitae ultricies leo integer malesuada. Sit amet facilisis magna etiam tempor orci eu. Nec nam aliquam sem et tortor consequat id porta. Est ante in nibh mauris. Eu feugiat pretium nibh ipsum consequat nisl vel. Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Mauris vitae ultricies leo integer malesuada nunc vel risus commodo. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Lacus vel facilisis volutpat est velit egestas. Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Volutpat est velit egestas dui id ornare arcu odio ut. Venenatis a condimentum vitae sapien pellentesque. Amet nisl suscipit adipiscing bibendum est ultricies integer. Lectus quam id leo in. Non curabitur gravida arcu ac tortor dignissim convallis aenean.
+I used
+
+-   macOS Sonoma 14.7.3
+
+-   Katalon Studio Free 10.1.0
+
+## How to run the demo
+
+You can run the project and see the demonstration as follows:
+
+1.  Clone the Git repository <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project> to your local machine.
+
+2.  Open the project with your Katalon Studio. Execute "Test Suites/Suite002". It will take 30 seconds or so.
+
+3.  When the Test Suite finished, you will find `<projectDir>/Extent/yyyyMMdd_hhmmss/kseqatestreport.html`, which looks something like this:
+
+<figure>
+<img src="./images/kseqatestreport.html.png" alt="kseqatestreport.html" />
+</figure>
+
+## How the project is coded
+
+[My demo project](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project) is entirely a fork from coty’s [original](https://github.com/coty/extent-report-sample) project.
+
+I made several changes my demo project. You can find the exact differences between the original and my derivatives at the GitHub diff compare page at
+
+-   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…​0.0.1>
+
+Notably, I made 2 changes:
+
+### A new class `com.kazurayam.ks.ExtentReportsKeyword`
+
+I added a new class [`com.kazurayam.ks.ExtentReports`](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/kazurayam/ks/ExtentReportsKeyword.groovy). This class borrows all the methods of the [`com.katalon.extent.report.ExtentReport`](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy) class as componet. However, my class is capable to inject my own customization in to the report. For example, see the `startEReport` method:
+
+       @Keyword
+        def startEReport(TestCaseContext testCaseContext) {
+            component.startEReport(testCaseContext)
+            // customize the report!
+            component.extentTest.assignCategory("GIT BRANCH: " + getGitBranch())
+        }
+
+### Changed the TestListener
+
+I edited the `Test Listeners/ExtentReportsListener.groovy` so that it no longer calls the original `com.katalon.extent.ExtentReport` keyword. Instead, It calls the new `com.kazurayam.ks.ExtentReportKeyword`. You can see the diff of old/new `ExtentReportsListener` at:
+
+-   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…​0.0.1#diff-f4ea12441d88d4878f66d8412e61ca8c2de6bdb20a6d99f31f62a5fa655857c0>
+
+I would quote a small piece out of the changes:
+
+            @BeforeTestSuite
+            def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
+    -               //CustomKeywords.'com.katalon.extent.report.ExtentReport.deleteFolderContents'()
+    -               CustomKeywords.'com.katalon.extent.report.ExtentReport.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
+    +               //CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.deleteFolderContents'()
+    +               CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
+            }
+
+## How the external dependancies are managed?
+
+If you look into the `<projectDir>/Dependencies`, you will find several jar files on which this project depends.
+
+    $ tree Drivers
+    Drivers
+    ├── extentreports-5.1.1.jar
+    ├── freemarker-2.3.32.jar
+    ├── katalon_generated_extentreports-5.1.1.jar
+    ├── katalon_generated_freemarker-2.3.32.jar
+    ├── katalon_generated_gson-2.10.1.jar
+    ├── katalon_generated_lombok-1.18.26.jar
+    ├── katalon_generated_reactive-streams-1.0.4.jar
+    ├── katalon_generated_rxjava-3.1.8.jar
+    ├── reactive-streams-1.0.4.jar
+    └── rxjava-3.1.8.jar
+
+    1 directory, 10 files
+
+If you are going to use Externt Reports in your own Katalon project, you want to copy those jar files into the `Drivers`
+
+If you removed all those files, you can restore them by invoking a Gradle build:
+
+    :~/katalon-workspace/extent-reports-applied-to-katalon-studio-project (master *)
+    $ rm Drivers/*
+    :~/katalon-workspace/
+
+    $ gradle katalonCopyDependencies
+    ...
+    BUILD SUCCESSFUL in 1s
+    1 actionable task: 1 executed
+    :~/katalon-workspace/
+
+    $ ls Drivers/
+    katalon_generated_extentreports-5.1.1.jar
+    katalon_generated_freemarker-2.3.32.jar
+    katalon_generated_gson-2.10.1.jar
+    katalon_generated_lombok-1.18.26.jar
+    katalon_generated_reactive-streams-1.0.4.jar
+    katalon_generated_rxjava-3.1.8.jar
+
+If you are interested in how Gradle works in this project, you should study the [build.gradle](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/build.gradle) file.
+
+## Extent Report integration plugin
+
+Katalon offers a plugin named [ExtentReport integration plugin](https://docs.katalon.com/katalon-studio/integrations/test-analysis/extent-reports-integration). It was first published in April 2024 on GitHub as a free stuff.
+
+-   <https://forum.katalon.com/t/katalon-and-extent-reports-integration/44337/3>
+
+Later in Jun 2024, the integration plugin was changed to be an enterprise plugin.
+
+-   <https://forum.katalon.com/t/katalon-and-extent-reports-integration/44337/7>
+
+We can read the [Changelog](https://store.katalon.com/product/387/Extent-Report-Integration/change-logs) of the integration plugin. The Changelong shows that several updates was made at 05 Feb 2025. I believe, the plugin will be maintained by Katalon as needed in future.
+
+However I personally do not have an Enterprise license, so that I can not study the Extent Report integration plugin at all. I have no idea what changes were made in the recent updates.
