@@ -80,8 +80,7 @@ I made no change.
 [The class source in my demo project](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy) is just
 the same as [the original](https://github.com/coty/extent-report-sample/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy).
 
-Therefore, whenever the original reposigory is updated (if any),
-I would not hesitate to carry out "git pull" from the original repository to my fork.
+Therefore, whenever the original repository is updated, I would not hesitate to do "git pull" from the original repository to my fork.
 
 ### A new class `com.kazurayam.ks.ExtentReportsKeyword`
 
@@ -109,6 +108,8 @@ I would quote a small piece out of the changes:
     +               //CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.deleteFolderContents'()
     +               CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
             }
+
+A warning. If the original repository by @coty is updated in future and if I do "git pull" into the fork, then it is likely to encounter some merge conflicts over the `Test Listeners/ExtentReportsListener.groovy`. However, I believe the original repository will be left unmaintained in future. So that, I wouldn’t mind this risk too much.
 
 ## How the external dependancies are managed?
 
