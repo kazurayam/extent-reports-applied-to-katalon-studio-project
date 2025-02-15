@@ -65,7 +65,7 @@ link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-proje
 
 I made several changes my demo project. You can find the exact differences between the original and my derivatives at the GitHub diff compare page at
 
-- https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…0.0.1
+- https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…0.1.0
 
 Please note the following 3 points:
 
