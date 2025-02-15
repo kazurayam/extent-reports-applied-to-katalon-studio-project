@@ -40,7 +40,7 @@ I forked the project to form a new GitHub repository at
 
 I made some changes in the forked repository, and got a success to create a HTML report that displays :
 
-image:./images/GIT_BRANCH_master.png[]
+image:https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/images/GIT_BRANCH_master.png[]
 
 == Environment
 
@@ -57,11 +57,11 @@ You can run the project and see the demonstration as follows:
 2. Open the project with your Katalon Studio. Execute "Test Suites/Suite002". It will take 30 seconds or so.
 3. When the Test Suite finished, you will find `<projectDir>/Extent/yyyyMMdd_hhmmss/kseqatestreport.html`, which looks something like this:
 
-image::./images/kseqatestreport.html.png[]
+image::https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/images/kseqatestreport.html.png[]
 
 == How the project is coded
 
-link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project[My demo project] is entirely a fork from coty's link:https://github.com/coty/extent-report-sample[original] project.
+link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project[My demo project] is entirely a fork from the coty's link:https://github.com/coty/extent-report-sample[original] project.
 
 I made several changes my demo project. You can find the exact differences between the original and my derivatives at the GitHub diff compare page at
 
@@ -72,16 +72,14 @@ Please note the following 3 points:
 === No change in `com.katalon.extent.report.ExtentReport` class
 
 The link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[com.katalon.extent.report.ExtentReport] class
-is the core part of the project, which implements interface between your Katalon test scripts and the Extent Reports library.
-I made no change.
-link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[The class source in my demo project] is just
+is the core part of the project, which implements the interface between your Katalon test scripts and the Extent Reports library. I made no change in it. link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[The class source in my demo project] is just
 the same as link:https://github.com/coty/extent-report-sample/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[the original].
 
 Therefore, whenever the original repository is updated, I would not hesitate to do "git pull" from the original repository in to my fork.
 
 === A new class `com.kazurayam.ks.ExtentReportsKeyword`
 
-I added a new class link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/kazurayam/ks/ExtentReportsKeyword.groovy[`com.kazurayam.ks.ExtentReports`]. This class borrows all the methods of the link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[`com.katalon.extent.report.ExtentReport`] class as componet. However, my class is capable to inject my own customization in to the report. For example, see the `startEReport` method:
+I added a new class link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/kazurayam/ks/ExtentReportsKeyword.groovy[`com.kazurayam.ks.ExtentReports`]. This class borrows all the methods of the link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[`com.katalon.extent.report.ExtentReport`] class as component. However, my class is capable to inject my own customization in to the report. For example, see the `startEReport` method:
 
 [source, groovy]
 ----
@@ -130,6 +128,11 @@ Drivers
 
 1 directory, 10 files
 ----
+
+[quote]
+____
+I have a doubt about this list of dependencies. Do we need the `extentreport-5.1.1..jar` and `katalon_generated_extentreports-5.1.1.jar` together? It looks duplicating, isn't it? But for now I wouldn't stick to this point.
+____
 
 If you are going to use Externt Reports in your own Katalon project, you want to copy those jar files into the `Drivers` folder of your own project.
 
