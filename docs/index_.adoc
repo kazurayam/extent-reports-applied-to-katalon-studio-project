@@ -77,7 +77,7 @@ I made no change.
 link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[The class source in my demo project] is just
 the same as link:https://github.com/coty/extent-report-sample/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[the original].
 
-Therefore, whenever the original repository is updated, I would not hesitate to do "git pull" from the original repository to my fork.
+Therefore, whenever the original repository is updated, I would not hesitate to do "git pull" from the original repository in to my fork.
 
 === A new class `com.kazurayam.ks.ExtentReportsKeyword`
 
@@ -131,9 +131,9 @@ Drivers
 1 directory, 10 files
 ----
 
-If you are going to use Externt Reports in your own Katalon project, you want to copy those jar files into the `Drivers`
+If you are going to use Externt Reports in your own Katalon project, you want to copy those jar files into the `Drivers` folder of your own project.
 
-If you removed all those files, you can restore them by invoking a Gradle build:
+When you accidentaly removed all those files, you can restore them by invoking a Gradle build:
 
 [source]
 ----
