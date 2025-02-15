@@ -20,7 +20,7 @@ CustomKeywords.'com.katalon.extent.report.ExtentReport.attachLog'('Application T
 
 WebUI.click(findTestObject('Object Repository/OR Web/Page_CURA Healthcare Service/a_Make Appointment'))
 
-WebUI.verifyMatch(title, 'hello', false)
+WebUI.verifyMatch(title, 'CURA Healthcare Service', false)
 
 WebUI.click(findTestObject('Object Repository/OR Web/Page_CURA Healthcare Service/span_Demo account_demo_username_label'))
 

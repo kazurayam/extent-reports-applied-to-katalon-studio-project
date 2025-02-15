@@ -27,7 +27,7 @@ import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.testcase.TestCaseFactory
 import com.kms.katalon.core.webui.driver.DriverFactory
-import com.kms.katalon.core.webui.driver.SmartWaitWebDriver
+//import com.kms.katalon.core.webui.driver.SmartWaitWebDriver
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 
@@ -98,7 +98,8 @@ public class ExtentReport {
 	@Keyword
 	public static String getScreenshot() throws IOException {
 		if(getExecutionSourceName.startsWith("Test Suite")) {
-			WebDriver driver = ((SmartWaitWebDriver)DriverFactory.getWebDriver()).getWrappedDriver()
+			//WebDriver driver = ((SmartWaitWebDriver)DriverFactory.getWebDriver()).getWrappedDriver()   // compile error
+			WebDriver driver = DriverFactory.getWebDriver()
 			if (driver == null) {
 				throw new IllegalArgumentException("WebDriver instance cannot be null");
 			}

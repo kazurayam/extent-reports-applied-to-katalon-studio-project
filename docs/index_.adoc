@@ -1,0 +1,182 @@
+= How to apply Extent Reports to Katalon Studio project
+
+This repository presents a link:https://katalon.com/katalon-studio[Katalon Studio] project which integrates the link:https://extentreports.com/[Extent Reports] to compile a test execution report in HTML. The Extent Reports enables users to customize the content of the report.
+
+== Problem to solve
+
+In the Katalon Community forum, there was a topic
+
+- https://forum.katalon.com/t/is-possible-to-add-in-html-or-pdf-reports-the-git-current-branch/163746
+
+Let me quote the part of the pos here:
+
+[quote]
+____
+I´m trying to customize the html and pdf report in order to show some usefull information.
+
+I would like to show the current branch of the repository that I´m testing in the Excecution environment section of the report
+____
+
+image::https://europe1.discourse-cdn.com/katalon/original/3X/6/2/6263a3befc8600a64947a34719a1b8a9ce0c987a.png[]
+
+The original poster tried to customize the built-in HTML report compiled by Katalon Studio, but he could not find out the way. I knew the https://forum.katalon.com/t/is-possible-to-add-in-html-or-pdf-reports-the-git-current-branch/163746/3[answer] to him. The Katalon built-in report is not customizable at all. Then, what should he do?
+
+== Solution
+
+In the link:https://forum.katalon.com/t/is-possible-to-add-in-html-or-pdf-reports-the-git-current-branch/163746/7[following post], I suggested link:https://extentreports.com/[Extent Reports]. Using it, he should be able to compile a new test execution report. It would be easy to insert the Git branch name, like `GIT BRANCH: master`.
+
+
+== Description
+
+In the GitHub, I found a public repository by https://github.com/coty[coty], Katalon CTO.
+
+- https://github.com/coty/extent-report-sample
+
+The repository contains a Katalon Studio project. Katalon users can learn how to use the Extent Reports in a Katalon project.
+
+I forked the project to form a new GitHub repository at
+
+- https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project
+
+I made some changes in the forked repository, and got a success to create a HTML report that displays :
+
+image:./images/GIT_BRANCH_master.png[]
+
+== Environment
+
+I used
+
+- macOS Sonoma 14.7.3
+- Katalon Studio Free 10.1.0
+
+== How to run the demo
+
+You can run the project and see the demonstration as follows:
+
+1. Clone the Git repository https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project to your local machine.
+2. Open the project with your Katalon Studio. Execute "Test Suites/Suite002". It will take 30 seconds or so.
+3. When the Test Suite finished, you will find `<projectDir>/Extent/yyyyMMdd_hhmmss/kseqatestreport.html`, which looks something like this:
+
+image::./images/kseqatestreport.html.png[]
+
+== How the project is coded
+
+link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project[My demo project] is entirely a fork from coty's link:https://github.com/coty/extent-report-sample[original] project.
+
+I made several changes my demo project. You can find the exact difference between the original and my derivative at the GitHub diff page at
+
+- 
+
+=== Ut enim ad minim veriam
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+==== Duis aute irure dolor
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+===== Excepteur sint occaecat cupidatat
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+== Quo usque tandem abutere
+
+Quo usque tandem abutere, Catilina, patientia nostra?
+
+== Header with (& - _ : ; ) non Latin Characters
+
+Quam diu etiam furor iste tuus nos eludet?
+
+== Source code inclusion example
+
+[source,shell]
+----
+include::./adoc2md.sh[lines=1..100]
+----
+
+== Diagram example
+
+Generated using link:https://plantuml.com/ja/[PlantUML]
+
+image::https://kazurayam.github.io/adoc2md/diagrams/out/sequence/sequence.png[]
+
+== 宮沢賢治の詩その1
+
+心象スケッチ　春と修羅
+
+```
+わたくしといふ現象は
+仮定された有機交流電燈の
+ひとつの青い照明です
+（あらゆる透明な幽霊の複合体）
+風景やみんなといつしよに
+せはしくせはしく明滅しながら
+いかにもたしかにともりつづける
+因果交流電燈の
+ひとつの青い照明です
+（ひかりはたもち　その電燈は失はれ）
+
+これらは二十二箇月の
+過去とかんずる方角から
+紙と鉱質インクをつらね
+（すべてわたくしと明滅し
+　みんなが同時に感ずるもの）
+ここまでたもちつゞけられた
+かげとひかりのひとくさりづつ
+そのとほりの心象スケッチです
+```
+
+== 宮沢賢治の詩その2
+
+```
+雨ニモマケズ
+風ニモマケズ
+雪ニモ夏ノ暑サニモマケヌ
+丈夫ナカラダヲモチ
+欲ハナク
+決シテ瞋ラズ
+イツモシヅカニワラッテヰル
+一日ニ玄米四合ト
+味噌ト少シノ野菜ヲタベ
+アラユルコトヲ
+ジブンノカンジョウニ入レズニ
+ヨクミキキシワカリ
+ソシテワスレズ
+野原ノ松ノ林ノ蔭ノ
+小サナ萱ブキノ小屋にヰテ
+東に病気ノコドモアレバ
+行ッテ看病シテヤリ
+西ニ疲レタ母アレバ
+行ッテソノ稲ノ束ヲ負ヒ
+南ニシニサウナ人アレバ
+行ッテコハガラナクテモイゝトイヒ
+北にケンクヮヤソショウガアレバ
+ツマラナイカラヤメロとイヒ
+ヒドリノトキハナミダヲナガし
+サムサノナツハオロオロアルキ
+ミンナニデクノボー トヨバレ
+ホメラレモセズ
+クニモサレズ
+サウイフモノニ
+ワタシハナリタイ
+
+南無無辺行菩薩
+南無上行菩薩
+南無多宝如来
+南無妙法蓮華経
+南無釈迦牟尼仏
+南無浄行菩薩
+南無安立行菩薩
+```
+
+== Dolorem ipsum
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa. Praesent tristique magna sit amet purus. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. In cursus turpis massa tincidunt dui ut. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Facilisis mauris sit amet massa vitae tortor condimentum. Sapien faucibus et molestie ac feugiat sed lectus vestibulum. Eu turpis egestas pretium aenean pharetra magna ac placerat. Nulla aliquet porttitor lacus luctus accumsan tortor posuere. Sit amet purus gravida quis blandit turpis cursus. Suspendisse sed nisi lacus sed. Laoreet non curabitur gravida arcu ac. Dolor sit amet consectetur adipiscing elit pellentesque. Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat.
+
+Praesent tristique magna sit amet purus gravida quis blandit turpis. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Suspendisse faucibus interdum posuere lorem ipsum dolor sit. Sem integer vitae justo eget magna fermentum iaculis eu. Felis bibendum ut tristique et egestas. Vel orci porta non pulvinar neque laoreet. Ac tortor vitae purus faucibus ornare suspendisse sed. In mollis nunc sed id semper. Pellentesque id nibh tortor id aliquet lectus proin. Id faucibus nisl tincidunt eget nullam non nisi est. Senectus et netus et malesuada fames ac turpis egestas. Viverra vitae congue eu consequat ac. Vel pharetra vel turpis nunc eget lorem dolor sed viverra. Sodales ut eu sem integer vitae. Pharetra vel turpis nunc eget lorem. Nam at lectus urna duis convallis convallis tellus. Massa tempor nec feugiat nisl pretium fusce id velit ut. Et ultrices neque ornare aenean euismod elementum nisi. Ut morbi tincidunt augue interdum velit. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus.
+
+Et sollicitudin ac orci phasellus egestas tellus. Sit amet purus gravida quis blandit turpis cursus. Interdum varius sit amet mattis vulputate enim nulla aliquet. Quam id leo in vitae turpis massa sed elementum. Justo donec enim diam vulputate ut pharetra sit amet aliquam. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Leo integer malesuada nunc vel risus commodo viverra maecenas. Neque viverra justo nec ultrices dui sapien eget mi. Vel risus commodo viverra maecenas. Purus in massa tempor nec feugiat nisl pretium fusce. In nisl nisi scelerisque eu ultrices vitae. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut. Elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices sagittis orci a scelerisque purus semper. Aliquam sem et tortor consequat id. Sed vulputate odio ut enim blandit volutpat maecenas volutpat. Sed euismod nisi porta lorem mollis aliquam.
+
+Faucibus ornare suspendisse sed nisi lacus sed viverra. Duis at tellus at urna. Sem fringilla ut morbi tincidunt augue interdum. Proin libero nunc consequat interdum varius sit amet. Elementum facilisis leo vel fringilla est. In fermentum posuere urna nec tincidunt. Urna id volutpat lacus laoreet non curabitur gravida arcu ac. Arcu ac tortor dignissim convallis aenean et tortor. Odio facilisis mauris sit amet massa vitae tortor condimentum. At tellus at urna condimentum mattis pellentesque. Sed tempus urna et pharetra pharetra massa. Gravida quis blandit turpis cursus in hac. Enim neque volutpat ac tincidunt vitae semper quis lectus nulla. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+
+Aliquam purus sit amet luctus venenatis lectus magna. Vitae ultricies leo integer malesuada. Sit amet facilisis magna etiam tempor orci eu. Nec nam aliquam sem et tortor consequat id porta. Est ante in nibh mauris. Eu feugiat pretium nibh ipsum consequat nisl vel. Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Mauris vitae ultricies leo integer malesuada nunc vel risus commodo. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Lacus vel facilisis volutpat est velit egestas. Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Volutpat est velit egestas dui id ornare arcu odio ut. Venenatis a condimentum vitae sapien pellentesque. Amet nisl suscipit adipiscing bibendum est ultricies integer. Lectus quam id leo in. Non curabitur gravida arcu ac tortor dignissim convallis aenean.

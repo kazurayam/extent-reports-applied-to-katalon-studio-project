@@ -17,7 +17,7 @@ CustomKeywords.'com.katalon.extent.report.ExtentReport.attachLog'('User name : J
 
 WebUI.setText(findTestObject('Object Repository/OR Web/Page_CURA Healthcare Service/input_Password_password'), pass)
 
-WebUI.click(findTestObject('OR Web/Page_CURA Healthcare Service/Hello'))
+WebUI.click(findTestObject('OR Web/Page_CURA Healthcare Service/button_Login'))
 
 CustomKeywords.'com.katalon.extent.report.ExtentReport.attachLog'('Login')
 
