@@ -68,7 +68,7 @@ You can run the project and see the demonstration as follows:
 
 I made several changes my demo project. You can find the exact differences between the original and my derivatives at the GitHub diff compare page at
 
--   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…0.0.1>
+-   <https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/compare/original…0.1.0>
 
 Please note the following 3 points:
 
@@ -130,7 +130,7 @@ If you look into the `<projectDir>/Dependencies`, you will find several jar file
 
 > I have a doubt about this list of dependencies. Do we need the `extentreport-5.1.1..jar` and `katalon_generated_extentreports-5.1.1.jar` together? It looks duplicating, isn’t it? But for now I wouldn’t stick to this point.
 
-If you are going to use Externt Reports in your own Katalon project, you want to copy those jar files into the `Drivers` folder of your own project.
+If you are going to use Extent Reports in your own Katalon project, you want to copy those jar files into the `Drivers` folder of your own project.
 
 When you accidentaly removed all those files, you can restore them by invoking a Gradle build:
 
