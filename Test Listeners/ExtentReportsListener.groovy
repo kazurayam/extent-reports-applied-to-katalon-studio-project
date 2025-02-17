@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As
+import com.kazurayam.ks.extentreports.ERAgent
+import com.kazurayam.ks.extentreports.WebUiBuiltInKeywordsLiaison as WebUiLiaison
 import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.annotation.BeforeTestCase
@@ -8,23 +11,30 @@ import com.kms.katalon.core.context.TestSuiteContext
 class ExtentReportsListener {
 
 	@BeforeTestSuite
-	def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
-		//CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.deleteFolderContents'()
-		CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
+	def beforeTestSuite(TestSuiteContext testSuiteContext) {
+		initializeLiaisons()
+		//ExtentReportsKeyword.getInstance().deleteFolderContents()
+		ERAgent.getInstance().attachEReport(testSuiteContext, "Extent Report", "KSE QA Test Report")
 	}
 
 	@BeforeTestCase
-	def sampleBeforeTestCase(TestCaseContext testCaseContext) {
-		CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.startEReport'(testCaseContext)
+	def beforeTestCase(TestCaseContext testCaseContext) {
+		initializeLiaisons()
+		ERAgent.getInstance().startEReport(testCaseContext)
 	}
 
 	@AfterTestCase
-	def sampleAfterTestCase(TestCaseContext testCaseContext) throws IOException {
-		CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.takeScreenshotFailure'(testCaseContext)
+	def afterTestCase(TestCaseContext testCaseContext) throws IOException {
+		ERAgent.getInstance().takeScreenshotFailure(testCaseContext)
 	}
 
 	@AfterTestSuite
-	def sampleAfterTestSuite() {
-		CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.flushEReport'()
+	def afterTestSuite() {
+		ERAgent.getInstance().flushEReport()
+	}
+	
+	private void initializeLiaisons() {
+		WebUiLiaison.liaise([:])
+		WebUiLiaison INSTANCE = WebUiLiaison.getInstance()  
 	}
 }
