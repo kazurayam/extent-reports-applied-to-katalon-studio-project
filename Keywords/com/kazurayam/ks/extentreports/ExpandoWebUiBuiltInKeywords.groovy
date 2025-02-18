@@ -6,14 +6,14 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.constants.StringConstants
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 
-class WebUiBuiltInKeywordsLiaison {
+class ExpandoWebUiBuiltInKeywords {
 
 	private class SingletonHolder {
-		private static final WebUiBuiltInKeywordsLiaison INSTANCE =
-		new WebUiBuiltInKeywordsLiaison()
+		private static final ExpandoWebUiBuiltInKeywords INSTANCE =
+		new ExpandoWebUiBuiltInKeywords()
 	}
 
-	public static WebUiBuiltInKeywordsLiaison getInstance() {
+	public static ExpandoWebUiBuiltInKeywords getInstance() {
 		return SingletonHolder.INSTANCE
 	}
 
@@ -29,15 +29,15 @@ class WebUiBuiltInKeywordsLiaison {
 	private static Map<String, Closure> liaisedKeywords = [
 		'click': { args ->
 			TestObject to = (TestObject)args[0]
-			ERAgent.getInstance().attachLog(
+			ReportBuilder.getInstance().attachLog(
 					MessageFormat.format(StringConstants.KW_LOG_INFO_CLICKING_ON_OBJ, to.getObjectId()))
 		},
 		'setText': { args ->
 			TestObject to = (TestObject)args[0]
 			String readableText = (String)args[1]
-			ERAgent.getInstance().attachLog(
+			ReportBuilder.getInstance().attachLog(
 					MessageFormat.format(StringConstants.KW_LOG_INFO_CLEARING_OBJ_TXT, to.getObjectId()))
-			ERAgent.getInstance().attachLog(
+			ReportBuilder.getInstance().attachLog(
 					MessageFormat.format(StringConstants.KW_LOG_INFO_SETTING_OBJ_TXT_TO_VAL, [
 						to.getObjectId(),
 						readableText

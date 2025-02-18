@@ -1,6 +1,4 @@
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As
-import com.kazurayam.ks.extentreports.ERAgent
-import com.kazurayam.ks.extentreports.WebUiBuiltInKeywordsLiaison as WebUiLiaison
+import com.kazurayam.ks.extentreports.ReportBuilder
 import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.annotation.BeforeTestCase
@@ -12,29 +10,23 @@ class ExtentReportsListener {
 
 	@BeforeTestSuite
 	def beforeTestSuite(TestSuiteContext testSuiteContext) {
-		initializeLiaisons()
 		//ExtentReportsKeyword.getInstance().deleteFolderContents()
-		ERAgent.getInstance().attachEReport(testSuiteContext, "Extent Report", "KSE QA Test Report")
+		ReportBuilder.getInstance().attachEReport(testSuiteContext, "Extent Report", "KSE QA Test Report")
 	}
 
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
-		initializeLiaisons()
-		ERAgent.getInstance().startEReport(testCaseContext)
+		ReportBuilder.getInstance().startEReport(testCaseContext)
 	}
 
 	@AfterTestCase
 	def afterTestCase(TestCaseContext testCaseContext) throws IOException {
-		ERAgent.getInstance().takeScreenshotFailure(testCaseContext)
+		ReportBuilder.getInstance().takeScreenshotFailure(testCaseContext)
 	}
 
 	@AfterTestSuite
 	def afterTestSuite() {
-		ERAgent.getInstance().flushEReport()
+		ReportBuilder.getInstance().flushEReport()
 	}
 	
-	private void initializeLiaisons() {
-		WebUiLiaison.liaise([:])
-		WebUiLiaison INSTANCE = WebUiLiaison.getInstance()  
-	}
 }
