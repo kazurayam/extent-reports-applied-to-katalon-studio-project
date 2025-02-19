@@ -175,7 +175,7 @@ If you are interested in how Gradle works in this project, you should study the 
 
 :urlPrefix: https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source
 
-link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/keyword/builtin/CommentKeyword.groovy[com.kms.katalon.core.keyword.builtin.CommentKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy[com.kms.katalon.core.keyword.internal.AbstractKeyword].
+link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/keyword/builtin/CommentKeyword.groovy[com.kms.katalon.core.keyword.builtin.CommentKeyword] extends link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy[com.kms.katalon.core.keyword.internal.AbstractKeyword].
 
 link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/ClickKeyword.groovy[com.kms.katalon.core.webui.keyword.builtin.ClickKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy[com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword].
 
