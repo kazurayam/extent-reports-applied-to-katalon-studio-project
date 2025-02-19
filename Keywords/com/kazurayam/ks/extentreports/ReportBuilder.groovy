@@ -19,10 +19,13 @@ abstract class ReportBuilder {
 
 	abstract void addScreenshot(String s)
 
-    // method to get the instance
+	private boolean disable
+	
+	// method to get the instance of ReportBuilderOnKatalonImpl
 	public static ReportBuilder getInstance() {
 		// this instance will be instantiated at the initial call only.
 		return ReportBuilderOnKatalonImpl.getInstance()
 	}
-
+	
+	
 }
