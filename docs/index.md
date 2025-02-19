@@ -2,6 +2,20 @@
 
 This repository presents a [Katalon Studio](https://katalon.com/katalon-studio) project which integrates the [Extent Reports](https://extentreports.com/) to compile a test execution report in HTML. The Extent Reports enables users to customize the content of the report.
 
+## Katalon Studio sources
+
+-   [com.kms.katalon.core.keyword.internal.AbstractKeyword](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy)
+
+-   [com.kms.katalon.core.logging.KeywordLogger](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core/com/kms/katalon/core/logging/KeywordLogger.java)
+
+-   [com.kms.katalon.core.webui.keyword.builtin.ClickKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/ClickKeyword.groovy)
+
+-   [com.kms.katalon.core.webui.keyword.builtin.OpenBrowserKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/OpenBrowserKeyword.groovy)
+
+-   [com.kms.katalon.core.webui.keyword.builtin.SetTextKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/SetTextKeyword.groovy)
+
+-   [com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/keyword/internal/WebUIAbstractKeyword.groovy)
+
 ## Problem to solve
 
 In the Katalon Community forum, there was a topic
@@ -153,17 +167,3 @@ When you accidentaly removed all those files, you can restore them by invoking a
     katalon_generated_rxjava-3.1.8.jar
 
 If you are interested in how Gradle works in this project, you should study the [build.gradle](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/build.gradle) file.
-
-## References
-
--   [com.kms.katalon.core.keyword.internal.AbstractKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/katalon-studio-source/10.0.0/source/com.kms.katalon.core/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy)
-
--   [com.kms.katalon.core.logging.KeywordLogger](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/katalon-studio-source/10.0.0/source/com.kms.katalon.core/com/kms/katalon/core/logging/KeywordLogger.java)
-
--   [com.kms.katalon.core.webui.keyword.builtin.ClickKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/ClickKeyword.groovy)
-
--   [com.kms.katalon.core.webui.keyword.builtin.OpenBrowserKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/OpenBrowserKeyword.groovy)
-
--   [com.kms.katalon.core.webui.keyword.builtin.SetTextKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/SetTextKeyword.groovy)
-
--   [com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword](https://kazurayam.github.io/extent-reports-applied-to-katalon-studio-project/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy)
