@@ -80,15 +80,27 @@ the same as [the original](https://github.com/coty/extent-report-sample/blob/mas
 
 Therefore, whenever the original repository is updated, I would not hesitate to do "git pull" from the original repository in to my fork.
 
-### A new class `com.kazurayam.ks.ExtentReportsKeyword`
+### A new class `com.kazurayam.ks.extentreports.ReportBuilder`
 
-I added a new class [`com.kazurayam.ks.ExtentReports`](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/kazurayam/ks/ExtentReportsKeyword.groovy). This class borrows all the methods of the [`com.katalon.extent.report.ExtentReport`](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy) class as component. However, my class is capable to inject my own customization in to the report. For example, see the `startEReport` method:
+I added a new abstrace class [`com.kazurayam.ks.extentreports.ReportBuilder`](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/Keywords/com/kazurayam/ks/extentreports/ReportBuilder.groovy). This abstract class borrows the method signatures of the [`com.katalon.extent.report.ExtentReport`](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy) class as component.
 
-       @Keyword
-        def startEReport(TestCaseContext testCaseContext) {
+       private boolean disable
+        
+        // method to get the instance of ReportBuilderOnKatalonImpl
+        public static ReportBuilder getInstance() {
+            // this instance will be instantiated at the initial call only.
+            return ReportBuilderOnKatalonImpl.getInstance()
+        }
+
+And I added a new class `com.kazurayam.ks.extentreports.ReportBuilderOnKatalonImpl` which extends the abstract `com.kazurayam.ks.extentreports.ReportBuilder`. This class inject my own customization in to the report. For example:
+
+       @Override
+        void startEReport(TestCaseContext testCaseContext) {
             component.startEReport(testCaseContext)
             // customize the report!
-            component.extentTest.assignCategory("GIT BRANCH: " + getGitBranch())
+            if (component.extentTest != null) {
+                component.extentTest.assignCategory("GIT BRANCH: " + getGitBranch())
+            }
         }
 
 ### Changed the TestListener
@@ -100,7 +112,7 @@ I edited the `Test Listeners/ExtentReportsListener.groovy` so that it no longer 
 I would quote a small piece out of the changes:
 
             @BeforeTestSuite
-            def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
+            def beforeTestSuite(TestSuiteContext testSuiteContext) {
     -               //CustomKeywords.'com.katalon.extent.report.ExtentReport.deleteFolderContents'()
     -               CustomKeywords.'com.katalon.extent.report.ExtentReport.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
     +               //CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.deleteFolderContents'()
@@ -155,6 +167,8 @@ When you accidentaly removed all those files, you can restore them by invoking a
 If you are interested in how Gradle works in this project, you should study the [build.gradle](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/build.gradle) file.
 
 ## Katalon Studio sources
+
+[com.kms.katalon.core.keyword.builtin.CommentKeyword](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core/com/kms/katalon/core/keyword/builtin/CommentKeyword.groovy) extends [com.kms.katalon.core.keyword.internal.AbstractKeyword](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy).
 
 [com.kms.katalon.core.webui.keyword.builtin.ClickKeyword](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/ClickKeyword.groovy) extends [com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword](https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy).
 

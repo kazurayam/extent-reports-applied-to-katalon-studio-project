@@ -80,13 +80,20 @@ the same as link:https://github.com/coty/extent-report-sample/blob/master/Keywor
 
 Therefore, whenever the original repository is updated, I would not hesitate to do "git pull" from the original repository in to my fork.
 
-=== A new class `com.kazurayam.ks.ExtentReportsKeyword`
+=== A new class `com.kazurayam.ks.extentreports.ReportBuilder`
 
-I added a new class link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/kazurayam/ks/ExtentReportsKeyword.groovy[`com.kazurayam.ks.ExtentReports`]. This class borrows all the methods of the link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[`com.katalon.extent.report.ExtentReport`] class as component. However, my class is capable to inject my own customization in to the report. For example, see the `startEReport` method:
+I added a new abstrace class link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/Keywords/com/kazurayam/ks/extentreports/ReportBuilder.groovy[`com.kazurayam.ks.extentreports.ReportBuilder`]. This abstract class borrows the method signatures of the link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/Keywords/com/katalon/extent/report/ExtentReport.groovy[`com.katalon.extent.report.ExtentReport`] class as component.
 
 [source, groovy]
 ----
-include::../Keywords/com/kazurayam/ks/ExtentReportsKeyword.groovy[lines=22..28]
+include::../Keywords/com/kazurayam/ks/extentreports/ReportBuilder.groovy[lines=22..28]
+----
+
+And I added a new class `com.kazurayam.ks.extentreports.ReportBuilderOnKatalonImpl` which extends the abstract `com.kazurayam.ks.extentreports.ReportBuilder`. This class inject my own customization in to the report. For example:
+
+[source,groovy]
+----
+include::../Keywords/com/kazurayam/ks/extentreports/ReportBuilderOnKatalonImpl.groovy[lines=40..47]
 ----
 
 === Changed the TestListener
@@ -100,7 +107,7 @@ I would quote a small piece out of the changes:
 [source]
 ----
         @BeforeTestSuite
-        def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
+        def beforeTestSuite(TestSuiteContext testSuiteContext) {
 -               //CustomKeywords.'com.katalon.extent.report.ExtentReport.deleteFolderContents'()
 -               CustomKeywords.'com.katalon.extent.report.ExtentReport.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
 +               //CustomKeywords.'com.kazurayam.ks.ExtentReportsKeyword.deleteFolderContents'()
@@ -167,6 +174,8 @@ If you are interested in how Gradle works in this project, you should study the 
 == Katalon Studio sources
 
 :urlPrefix: https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source
+
+link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/keyword/builtin/CommentKeyword.groovy[com.kms.katalon.core.keyword.builtin.CommentKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy[com.kms.katalon.core.keyword.internal.AbstractKeyword].
 
 link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/ClickKeyword.groovy[com.kms.katalon.core.webui.keyword.builtin.ClickKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy[com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword].
 
