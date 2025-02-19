@@ -2,6 +2,7 @@
 
 This repository presents a link:https://katalon.com/katalon-studio[Katalon Studio] project which integrates the link:https://extentreports.com/[Extent Reports] to compile a test execution report in HTML. The Extent Reports enables users to customize the content of the report.
 
+
 == Problem to solve
 
 In the Katalon Community forum, there was a topic
@@ -160,3 +161,19 @@ katalon_generated_rxjava-3.1.8.jar
 ----
 
 If you are interested in how Gradle works in this project, you should study the link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/master/build.gradle[build.gradle] file.
+
+== Katalon Studio sources
+
+:urlPrefix: https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/blob/develop/docs/katalon-studio-source/10.0.0/source
+
+link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/ClickKeyword.groovy[com.kms.katalon.core.webui.keyword.builtin.ClickKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy[com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword].
+
+
+link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/OpenBrowserKeyword.groovy[com.kms.katalon.core.webui.keyword.builtin.OpenBrowserKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy[com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword].
+
+link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/builtin/SetTextKeyword.groovy[com.kms.katalon.core.webui.keyword.builtin.SetTextKeyword] extends link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy[com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword].
+
+link:{urlPrefix}/com.kms.katalon.core.webui/com/kms/katalon/core/webui/keyword/internal/WebUIAbstractKeyword.groovy[com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword] extends link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy[com.kms.katalon.core.keyword.internal.AbstractKeyword]
+
+link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/keyword/internal/AbstractKeyword.groovy[com.kms.katalon.core.keyword.internal.AbstractKeyword] uses link:{urlPrefix}/com.kms.katalon.core/com/kms/katalon/core/logging/KeywordLogger.java[com.kms.katalon.core.logging.KeywordLogger]
+
