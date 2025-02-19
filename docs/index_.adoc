@@ -1,6 +1,8 @@
+
 = How to apply Extent Reports to Katalon Studio project
 
-This repository presents a link:https://katalon.com/katalon-studio[Katalon Studio] project which integrates the link:https://extentreports.com/[Extent Reports] to compile a test execution report in HTML. The Extent Reports enables users to customize the content of the report.
+
+This link:https://github.com/kazurayam/extent-reports-applied-to-katalon-studio-project/[repository] presents a link:https://katalon.com/katalon-studio[Katalon Studio] project which integrates the link:https://extentreports.com/[Extent Reports] to compile a test execution report in HTML. The Extent Reports enables users to customize the content of the report.
 
 
 == Problem to solve
