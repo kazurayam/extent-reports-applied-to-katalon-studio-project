@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC1</name>
+   <name>Psalm 201 En vänlig grönskas rika dräkt</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>412cc242-3c6b-4c46-bb9e-e104334ee46e</testCaseGuid>
+   <testCaseGuid>baf37f2e-3476-4a3a-9dad-97614edb0395</testCaseGuid>
 </TestCaseEntity>

@@ -28,34 +28,22 @@ import com.kms.katalon.core.testcase.TestCaseFactory
 import com.kms.katalon.core.webui.driver.DriverFactory
 
 /**
- * This class was developed in order to perform unit-tests over 
- *     com.kazurayam.ks.extentreports.ExpandoKeywordLogger class using junit4.
- * 
- * You should use this classjust for testing the ExpandoKeywordLogger.
- * 
- * This class is a mimic of com.katalon.extent.report.ExtentReport class but a slight modification.
- *     The original class works only if it is invoked in a Test Suite contect;
- *     it does not work in a Test Case context. 
- *     Therefore the original class is difficult to use with JUnit4.
- *     I wanted a simpler implementation of ReportBuilder that can work in 
- *     a Test Case Context. So I developed this.
- * 
- * You should prefer ReportBuilderOnKatalonImpl if you want to use
- * the "Extent Reports integration plugin" provided by Katalon.
  * 
  * @author kazurayam
  */
-public class ExtentSparkReportBuilder extends ReportBuilder {
+public class ReportBuilderKzImpl extends ReportBuilder {
 
+	// The "Bill Pugh Singleton" pattern is applied
+	// See https://www.baeldung.com/java-bill-pugh-singleton-implementation
 	private class SingletonHolder {
-		private static final ExtentSparkReportBuilder INSTANCE = new ExtentSparkReportBuilder()
+		private static final ReportBuilderKzImpl INSTANCE = new ReportBuilderKzImpl()
 	}
 
-	public static ExtentSparkReportBuilder getInstance() {
+	public static ReportBuilderKzImpl getInstance() {
 		return SingletonHolder.INSTANCE
 	}
 
-	private ExtentSparkReportBuilder() {}
+	private ReportBuilderKzImpl() {}
 
 	private ExtentSparkReporter sparkReporter
 	private ExtentReports extent
@@ -125,7 +113,7 @@ public class ExtentSparkReportBuilder extends ReportBuilder {
 		String fileName = "Screenshot_" + date + ".png"
 		TakesScreenshot ts = (TakesScreenshot)driver
 		File tempScreenshot = ts.getScreenshotAs(OutputType.FILE)
-		File destinationDir = new File(projectPath + "/Extent/" + reportName + "/Screenshots")
+		File destinationDir = new File(projectPath + "/ExtentKz/" + reportName + "/Screenshots")
 		if (!destinationDir.exists()) {
 			destinationDir.mkdirs()
 		}
@@ -142,7 +130,7 @@ public class ExtentSparkReportBuilder extends ReportBuilder {
 			extentTest.log(Status.FAIL, "****Error Message:***** " + testCaseContext.getMessage()); // to add error/exception in
 
 			String screenshotPath = getScreenshot()
-			//Add screenhot at the top
+			//Add screenshot at the top
 			//extentTest.log(Status.FAIL,"Screenshot Attached: " + testCaseContext.getTestCaseId()).addScreenCaptureFromPath(screenshotPath);
 			extentTest.log(Status.FAIL, 'Failed Screenshot added.', MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build())
 		} else if (testCaseContext.getTestCaseStatus() == ITestResult.SKIP) {

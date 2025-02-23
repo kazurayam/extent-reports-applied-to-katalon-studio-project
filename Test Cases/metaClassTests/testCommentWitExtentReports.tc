@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description></description>
-   <name>testCommentWitExtentReports</name>
-   <tag></tag>
-   <comment></comment>
-   <recordOption>OTHER</recordOption>
-   <testCaseGuid>cc316233-fb2c-4490-bbf8-22ed49a4a836</testCaseGuid>
-</TestCaseEntity>
