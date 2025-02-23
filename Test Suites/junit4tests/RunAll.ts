@@ -22,7 +22,7 @@
       <guid>f0c88632-e7f8-43b5-9e58-2ba5203ab775</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/junit4tests/com.kazurayam.ks.extentreports/ExpandoWebUiBuiltinKeywordsTestRunner</testCaseId>
+      <testCaseId>Test Cases/junit4tests/com.kazurayam.ks.extentreports/ExpandoKeywordLoggerTestRunner</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>

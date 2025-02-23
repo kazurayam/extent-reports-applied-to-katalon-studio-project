@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>ExpandoWebUiBuiltinKeywordsTestRunner</name>
+   <name>testString</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>321123eb-a4ee-40fb-ba9b-f2b9125c7631</testCaseGuid>
+   <testCaseGuid>b376972e-2918-4cc2-8101-ffe83112d49d</testCaseGuid>
 </TestCaseEntity>
