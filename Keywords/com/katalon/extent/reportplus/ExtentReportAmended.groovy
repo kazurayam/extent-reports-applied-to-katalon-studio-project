@@ -1,4 +1,4 @@
-package com.katalon.extent.report2
+package com.katalon.extent.reportplus
 
 import com.katalon.extent.report.ExtentReport
 import com.kms.katalon.core.annotation.Keyword

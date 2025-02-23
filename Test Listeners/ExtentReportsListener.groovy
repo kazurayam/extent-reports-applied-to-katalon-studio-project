@@ -11,26 +11,26 @@ class ExtentReportsListener {
 	
 	@BeforeTestSuite
 	def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
-		//CustomKeywords.'com.katalon.extent.report2.ExtentReportAmended.deleteFolderContents'()
-		CustomKeywords.'com.katalon.extent.report2.ExtentReportAmended.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
+		//CustomKeywords.'com.katalon.extent.reportplus.ExtentReportAmended.deleteFolderContents'()
+		CustomKeywords.'com.katalon.extent.reportplus.ExtentReportAmended.attachEReport'(testSuiteContext, "Extent Report", "KSE QA Test Report")
 		runAsTestSuite = true
 	}
 
 	@BeforeTestCase
 	def sampleBeforeTestCase(TestCaseContext testCaseContext) {
 		if (!runAsTestSuite) {
-			CustomKeywords.'com.katalon.extent.report2.ExtentReportAmended.attachEReport'(null, "Extent Report", "KSE QA Test Report")
+			CustomKeywords.'com.katalon.extent.reportplus.ExtentReportAmended.attachEReport'(null, "Extent Report", "KSE QA Test Report")
 		}
-		CustomKeywords.'com.katalon.extent.report2.ExtentReportAmended.startEReport'(testCaseContext)
+		CustomKeywords.'com.katalon.extent.reportplus.ExtentReportAmended.startEReport'(testCaseContext)
 	}
 
 	@AfterTestCase
 	def sampleAfterTestCase(TestCaseContext testCaseContext) throws IOException {
-		CustomKeywords.'com.katalon.extent.report2.ExtentReportAmended.takeScreenshotFailure'(testCaseContext)
+		CustomKeywords.'com.katalon.extent.reportplus.ExtentReportAmended.takeScreenshotFailure'(testCaseContext)
 	}
 
 	@AfterTestSuite
 	def sampleAfterTestSuite() {
-		CustomKeywords.'com.katalon.extent.report2.ExtentReportAmended.flushEReport'()
+		CustomKeywords.'com.katalon.extent.reportplus.ExtentReportAmended.flushEReport'()
 	}
 }
