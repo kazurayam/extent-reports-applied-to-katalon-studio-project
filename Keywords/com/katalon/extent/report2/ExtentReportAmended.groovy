@@ -1,16 +1,16 @@
-package com.kazurayam.ks
+package com.katalon.extent.report2
 
 import com.katalon.extent.report.ExtentReport
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 
-class ExtentReportsKeyword {
+class ExtentReportAmended {
 
 	// the original is found at https://github.com/coty/extent-report-sample
 	private ExtentReport component;
 
-	ExtentReportsKeyword() {
+	ExtentReportAmended() {
 		component = new ExtentReport()
 	}
 
@@ -23,7 +23,9 @@ class ExtentReportsKeyword {
 	def startEReport(TestCaseContext testCaseContext) {
 		component.startEReport(testCaseContext)
 		// customize the report!
-		component.extentTest.assignCategory("GIT BRANCH: " + getGitBranch())
+		if (component.extentTest != null) {
+			component.extentTest.assignCategory("GIT BRANCH: " + getGitBranch())
+		}
 	}
 
 	private String getGitBranch() {

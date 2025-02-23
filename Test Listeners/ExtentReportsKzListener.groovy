@@ -7,7 +7,7 @@ import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kazurayam.ks.extentreports.BuiltInKeywordsModifier
 
-class KzExtentReportsListener {
+class ExtentReportsKzListener {
 	
 	boolean runAsTestSuite = false
 

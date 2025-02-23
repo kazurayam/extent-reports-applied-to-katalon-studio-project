@@ -61,7 +61,7 @@ public class ReportBuilderKzImpl extends ReportBuilder {
 			String projectDir = System.getProperty("user.dir")) {
 		reportName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))
 		projectPath = projectDir
-		String folderPath = projectPath + "/Extent/" + reportName
+		String folderPath = projectPath + "/ExtentKz/" + reportName
 		if (!Files.exists(Paths.get(folderPath))) {
 			try {
 				Files.createDirectories(Paths.get(folderPath));
