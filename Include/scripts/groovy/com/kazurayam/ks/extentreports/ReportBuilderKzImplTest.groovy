@@ -7,14 +7,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-import com.kazurayam.ks.extentreports.ReportBuilder
+import com.kazurayam.ks.extentreports.ReportBuilderKzImpl
 
 @RunWith(JUnit4.class)
-public class ReportBuilderOnKatalonImplTest {
+public class ReportBuilderKzImplTest {
 
 	@Test
 	void test_getInstance() {
-		ReportBuilder instance = ReportBuilderOnKatalonImpl.getInstance()
+		ReportBuilder instance = ReportBuilderKzImpl.getInstance()
 		assertNotNull(instance)
 	}
+	
 }

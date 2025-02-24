@@ -15,14 +15,7 @@
       <guid>288cbb6d-021b-44f4-8cbf-b645b46e10a8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/junit4tests/com.kazurayam.ks.extentreports/ReportBuilderOnKatalonImplTestRunner</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>f0c88632-e7f8-43b5-9e58-2ba5203ab775</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/junit4tests/com.kazurayam.ks.extentreports/ExpandoKeywordLoggerTestRunner</testCaseId>
+      <testCaseId>Test Cases/junit4tests/com.kazurayam.ks.extentreports/ReportBuilderKzImplTestRunner</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>

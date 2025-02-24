@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>ExpandoKeywordLoggerTestRunner</name>
-   <tag></tag>
+   <name>ExtentReportKz003</name>
+   <tag>Sanity</tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>321123eb-a4ee-40fb-ba9b-f2b9125c7631</testCaseGuid>
+   <testCaseGuid>a2c486d6-7a5d-43ed-a3be-3fbccd8dba4c</testCaseGuid>
 </TestCaseEntity>

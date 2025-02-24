@@ -1,15 +1,13 @@
 package com.kazurayam.ks.extentreports
 
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType
 import org.openqa.selenium.TakesScreenshot
 import org.openqa.selenium.WebDriver
@@ -50,7 +48,8 @@ public class ReportBuilderKzImpl extends ReportBuilder {
 	private ExtentTest extentTest
 	private String executionSourceName = "TestCase"
 	private String reportName
-	private String projectPath
+	private Path projectPath
+	private Path reportPath
 
 	/**
 	 * @param testSuiteContext not used
@@ -60,17 +59,17 @@ public class ReportBuilderKzImpl extends ReportBuilder {
 			String documentTitle, String reportTitle,
 			String projectDir = System.getProperty("user.dir")) {
 		reportName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))
-		projectPath = projectDir
-		String folderPath = projectPath + "/ExtentKz/" + reportName
-		if (!Files.exists(Paths.get(folderPath))) {
+		projectPath = Paths.get(projectDir)
+		Path folderPath = projectPath.resolve("ExtentKz").resolve(reportName)
+		if (!Files.exists(folderPath)) {
 			try {
-				Files.createDirectories(Paths.get(folderPath));
+				Files.createDirectories(folderPath);
 			} catch (IOException e) {
 				System.err.println("Failed to create the folder: " + e.getMessage());
 			}
 		}
-		Path htmlPath = Paths.get(folderPath).resolve(reportTitle.replaceAll(" ", "").toLowerCase() + ".html")
-		sparkReporter = new ExtentSparkReporter(htmlPath.toString())
+		reportPath = folderPath.resolve(reportTitle.replaceAll(" ", "_") + ".html")
+		sparkReporter = new ExtentSparkReporter(reportPath.toString())
 		sparkReporter.config().setDocumentTitle(documentTitle)
 		sparkReporter.config().setReportName(reportTitle)
 		sparkReporter.config().setTheme(Theme.STANDARD)
@@ -111,16 +110,18 @@ public class ReportBuilderKzImpl extends ReportBuilder {
 		}
 		String date = new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date())
 		String fileName = "Screenshot_" + date + ".png"
+
 		TakesScreenshot ts = (TakesScreenshot)driver
-		File tempScreenshot = ts.getScreenshotAs(OutputType.FILE)
-		File destinationDir = new File(projectPath + "/ExtentKz/" + reportName + "/Screenshots")
-		if (!destinationDir.exists()) {
-			destinationDir.mkdirs()
+		Path tempScreenshot = ts.getScreenshotAs(OutputType.FILE).toPath()
+
+		Path destinationDir = projectPath.resolve("ExtentKz").resolve(reportName).resolve("Screenshots")
+		if (!Files.exists(destinationDir)) {
+			Files.createDirectories(destinationDir)
 		}
-		File finalDestination = new File(destinationDir, fileName)
-		FileUtils.copyFile(tempScreenshot, finalDestination)
-		tempScreenshot.delete()
-		return finalDestination.getAbsolutePath()
+		Path finalDestination = destinationDir.resolve(fileName)
+		Files.copy(tempScreenshot, finalDestination, StandardCopyOption.REPLACE_EXISTING)
+		Files.delete(tempScreenshot)
+		return finalDestination.toAbsolutePath().toString()
 	}
 
 	@Override
@@ -149,5 +150,15 @@ public class ReportBuilderKzImpl extends ReportBuilder {
 	@Override
 	void attachLog(String details) {
 		extentTest.log(Status.PASS, details)
+	}
+	
+	@Override
+	Path getReportPath() {
+		return reportPath
+	}
+	
+	@Override
+	String getReportContent() {
+		
 	}
 }

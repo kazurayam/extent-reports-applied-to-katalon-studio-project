@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ExtentReportKz002</name>
+   <tag>Sanity</tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>3ed3d2ef-cc83-40b8-960d-2b02bf8f46fd</testCaseGuid>
+</TestCaseEntity>

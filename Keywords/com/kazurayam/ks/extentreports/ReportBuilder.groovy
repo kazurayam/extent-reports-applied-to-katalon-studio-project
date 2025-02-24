@@ -50,4 +50,8 @@ abstract class ReportBuilder {
 	abstract void addScreenshot(String s)
 
 	abstract void attachLog(String details)
+	
+	abstract Path getReportPath()
+	
+	abstract String getReportContent()
 }
