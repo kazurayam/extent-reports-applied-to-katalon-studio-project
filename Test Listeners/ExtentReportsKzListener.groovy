@@ -6,6 +6,7 @@ import com.kms.katalon.core.annotation.BeforeTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kazurayam.ks.extentreports.BuiltInKeywordsModifier
+import com.kazurayam.ks.extentreports.KeywordMainModifier
 
 class ExtentReportsKzListener {
 	
@@ -16,6 +17,7 @@ class ExtentReportsKzListener {
 		ReportBuilderKzImpl.getInstance().attachEReport(testSuiteContext, 
 			/* documentTitle: */ "Extent Report", 
 			/* reportTitle: */ "KSE QA Test Report")
+		KeywordMainModifier.apply()
 		BuiltInKeywordsModifier.apply()
 		runAsTestSuite = true
 	}
@@ -28,12 +30,13 @@ class ExtentReportsKzListener {
 				/* reportTitle: */ "KSE QA Test Report")
 		}
 		ReportBuilderKzImpl.getInstance().startEReport(testCaseContext)
+		KeywordMainModifier.apply()
 		BuiltInKeywordsModifier.apply()
 	}
 
 	@AfterTestCase
 	def afterTestCase(TestCaseContext testCaseContext) throws IOException {
-		ReportBuilderKzImpl.getInstance().takeScreenshotFailure(testCaseContext)
+		//ReportBuilderKzImpl.getInstance().takeScreenshotFailure(testCaseContext)   // may throw com.kms.katalon.core.webui.exception.BrowserNotOpenedException
 		ReportBuilderKzImpl.getInstance().flushEReport()
 	}
 

@@ -151,14 +151,13 @@ public class ReportBuilderKzImpl extends ReportBuilder {
 	void attachLog(String details) {
 		extentTest.log(Status.PASS, details)
 	}
-	
+
 	@Override
 	Path getReportPath() {
 		return reportPath
 	}
-	
+
 	@Override
 	String getReportContent() {
-		
 	}
 }
